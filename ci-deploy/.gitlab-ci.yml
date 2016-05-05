@@ -14,3 +14,4 @@ deploy:
   script:
     - hugo --destination "$BUILD_DIR"
     - rsync -rv -e "ssh -p $SSH_PORT" "$BUILD_DIR"/ "$SSH_HOSTDEST" --checksum
+    - minify -r -o $BUILD_DIR/ $BUILD_DIR/

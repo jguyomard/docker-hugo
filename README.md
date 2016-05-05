@@ -40,10 +40,11 @@ Then open [`http://localhost:1313/`](http://localhost:1313/) in your browser.
 For ease of use, you can create a bash alias:
 
 ```bash
-alias hugo='docker run --rm -it -v $PWD:/src -p 1313:1313 jguyomard/hugo-builder hugo'
+alias hugo='docker run --rm -it -v $PWD:/src jguyomard/hugo-builder hugo'
+alias hugo-server='docker run --rm -it -v $PWD:/src -p 1313:1313 jguyomard/hugo-builder hugo server --bind 0.0.0.0'
 ```
 
-Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo server -w --bind=0.0.0.0`, etc.
+Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 
 ## Supported tags
@@ -59,6 +60,7 @@ This Docker image also comes with:
 
 - rsync
 - openssh-client
+- [minify](https://github.com/tdewolff/minify)
 
 
 ## Issues
