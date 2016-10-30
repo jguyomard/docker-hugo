@@ -1,11 +1,13 @@
 image: jguyomard/hugo-builder:latest
 
+# Note: You have to define SSH_PRIVATE_KEY, SSH_PORT and SSH_HOSTDEST with gitlab variables.
+
 before_script:
   - BUILD_DIR="/tmp/build"
 
   # Run ssh-agent and add SSH key stored in SSH_PRIVATE_KEY variable
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - eval `ssh-agent -s`
+  - echo "$SSH_PRIVATE_KEY" | ssh-add /dev/stdin
   # For Docker builds disable host key checking - http://doc.gitlab.com/ce/ci/ssh_keys/README.html
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerinit ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
@@ -13,5 +15,5 @@ before_script:
 deploy:
   script:
     - hugo --destination "$BUILD_DIR"
-    - rsync -rv -e "ssh -p $SSH_PORT" "$BUILD_DIR"/ "$SSH_HOSTDEST" --checksum
     - minify -r -o $BUILD_DIR/ $BUILD_DIR/
+    - rsync -rv -e "ssh -p $SSH_PORT" "$BUILD_DIR"/ "$SSH_HOSTDEST" --checksum
