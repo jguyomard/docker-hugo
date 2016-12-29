@@ -49,11 +49,13 @@ Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 ## Supported tags
 
-* [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile).
-* [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile).
-* [`0.17`](https://github.com/jguyomard/docker-hugo/blob/v0.17/Dockerfile).
-* [`0.17-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.17/extras/Dockerfile).
-* [`0.16`](https://github.com/jguyomard/docker-hugo/blob/v0.16/Dockerfile).
+* [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile) ;
+* [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) ;
+* [`0.18`](https://github.com/jguyomard/docker-hugo/blob/v0.18/Dockerfile) ;
+* [`0.18-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.18/extras/Dockerfile) ;
+* [`0.17`](https://github.com/jguyomard/docker-hugo/blob/v0.17/Dockerfile) ;
+* [`0.17-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.17/extras/Dockerfile) ;
+* [`0.16`](https://github.com/jguyomard/docker-hugo/blob/v0.16/Dockerfile) ;
 * [`0.15`](https://github.com/jguyomard/docker-hugo/blob/v0.15/Dockerfile).
 
 
