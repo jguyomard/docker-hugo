@@ -51,6 +51,8 @@ Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 * [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile) ;
 * [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) ;
+* [`0.20`](https://github.com/jguyomard/docker-hugo/blob/v0.20/Dockerfile) ;
+* [`0.20-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.20/extras/Dockerfile) ;
 * [`0.19`](https://github.com/jguyomard/docker-hugo/blob/v0.19/Dockerfile) ;
 * [`0.19-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.19/extras/Dockerfile) ;
 * [`0.18`](https://github.com/jguyomard/docker-hugo/blob/v0.18/Dockerfile) ;
@@ -98,6 +100,7 @@ I use this Docker image for Continuous Deployment. You can find some CI config e
 This Docker image also comes with:
 
 - rsync
+- git
 - openssh-client
 - [minify](https://github.com/tdewolff/minify)
 
