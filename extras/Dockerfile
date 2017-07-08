@@ -1,4 +1,4 @@
-FROM jguyomard/hugo-builder:0.23
+FROM jguyomard/hugo-builder:0.24
 
 MAINTAINER JG <julien@mangue.eu>
 
