@@ -14,11 +14,27 @@ To print Hugo Help:
 docker run --rm -it jguyomard/hugo-builder hugo help
 ```
 
+## Get Started
+
 To create a new Hugo managed website:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new site mysite
 cd mysite
+
+# Now, you probably want to add a theme (see https://themes.gohugo.io/):
+git init
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke;
+echo 'theme = "ananke"' >> config.toml
+```
+
+To add some content:
+
+```bash
+docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/my-first-post.md
+
+# Now, you can edit this post, add your content and remove "draft" flag:
+xdg-open content/posts/my-first-post.md
 ```
 
 To build your site:
@@ -34,6 +50,9 @@ docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyomard/hugo-builder hug
 ```
 
 Then open [`http://localhost:1313/`](http://localhost:1313/) in your browser.
+
+To go further, read the [Hugo documentation](https://gohugo.io/documentation/).
+
 
 ## Bash Alias
 
