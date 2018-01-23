@@ -70,6 +70,8 @@ Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 * [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile) ;
 * [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) ;
+* [`0.33`](https://github.com/jguyomard/docker-hugo/blob/v0.33/Dockerfile) ;
+* [`0.33-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.33/extras/Dockerfile) ;
 * [`0.32`](https://github.com/jguyomard/docker-hugo/blob/v0.32/Dockerfile) ;
 * [`0.32-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.32/extras/Dockerfile) ;
 * [`0.31`](https://github.com/jguyomard/docker-hugo/blob/v0.31/Dockerfile) ;
