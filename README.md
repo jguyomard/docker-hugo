@@ -11,17 +11,15 @@ Hugo’s speed fosters creativity and makes building a website fun again.
 
 This Lightweight Docker Image is based on Alpine, and comes with rsync for Continuous Deployment.
 
-## Running
+## Get Started
 
-To print Hugo Help:
+Print Hugo Help:
 
 ```bash
 docker run --rm -it jguyomard/hugo-builder hugo help
 ```
 
-## Get Started
-
-To create a new Hugo managed website:
+Create a new Hugo managed website:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new site mysite
@@ -33,7 +31,7 @@ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/anan
 echo 'theme = "ananke"' >> config.toml
 ```
 
-To add some content:
+Add some content:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/my-first-post.md
@@ -42,13 +40,13 @@ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/m
 xdg-open content/posts/my-first-post.md
 ```
 
-To build your site:
+Build your site:
  
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 ```
 
-To serve your site locally:
+Serve your site locally:
 
 ```bash
 docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyomard/hugo-builder hugo server -w --bind=0.0.0.0
@@ -97,7 +95,7 @@ docker run --rm -it -v $PWD:/src -u 33:33 jguyomard/hugo-builder hugo
 
 ## Extras
 
-`extras` tag add some others tools and packages:
+The [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) tag adds additional tools and packages:
 
 * py-pygments
 
@@ -110,7 +108,7 @@ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder:extras hugo
 
 ## Continuous Deployment
 
-I use this Docker image for Continuous Deployment. You can find some CI config examples on `ci-deploy` directory.
+I use this Docker image for Continuous Deployment. You can find some CI config examples in the [`ci-deploy`](https://github.com/jguyomard/docker-hugo/tree/master/ci-deploy) directory.
 
 This Docker image also comes with:
 
