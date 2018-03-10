@@ -1,22 +1,25 @@
 # Hugo Docker Image
 
+[![Docker Automated build](https://img.shields.io/docker/automated/jguyomard/hugo-builder.svg)](https://store.docker.com/community/images/jguyomard/hugo-builder)
+[![Docker Build Status](https://img.shields.io/docker/build/jguyomard/hugo-builder.svg)](https://store.docker.com/community/images/jguyomard/hugo-builder/builds)
+[![Docker Pulls](https://img.shields.io/docker/pulls/jguyomard/hugo-builder.svg)](https://store.docker.com/community/images/jguyomard/hugo-builder)
+[![Image Info](https://images.microbadger.com/badges/image/jguyomard/hugo-builder.svg)](https://microbadger.com/images/jguyomard/hugo-builder)
+
 [Hugo](https://gohugo.io/) is a fast and flexible static site generator, written in Go. 
 Hugo flexibly works with many formats and is ideal for blogs, docs, portfolios and much more. 
 Hugo’s speed fosters creativity and makes building a website fun again.
 
 This Lightweight Docker Image is based on Alpine, and comes with rsync for Continuous Deployment.
 
-## Running
+## Get Started
 
-To print Hugo Help:
+Print Hugo Help:
 
 ```bash
 docker run --rm -it jguyomard/hugo-builder hugo help
 ```
 
-## Get Started
-
-To create a new Hugo managed website:
+Create a new Hugo managed website:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new site mysite
@@ -28,7 +31,7 @@ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/anan
 echo 'theme = "ananke"' >> config.toml
 ```
 
-To add some content:
+Add some content:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/my-first-post.md
@@ -37,13 +40,13 @@ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/m
 xdg-open content/posts/my-first-post.md
 ```
 
-To build your site:
+Build your site:
  
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 ```
 
-To serve your site locally:
+Serve your site locally:
 
 ```bash
 docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyomard/hugo-builder hugo server -w --bind=0.0.0.0
@@ -68,53 +71,14 @@ Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 ## Supported tags
 
-* [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile) ;
-* [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) ;
-* [`0.37`](https://github.com/jguyomard/docker-hugo/blob/v0.37/Dockerfile) ;
-* [`0.37-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.37/extras/Dockerfile) ;
-* [`0.36`](https://github.com/jguyomard/docker-hugo/blob/v0.36/Dockerfile) ;
-* [`0.36-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.36/extras/Dockerfile) ;
-* [`0.35`](https://github.com/jguyomard/docker-hugo/blob/v0.35/Dockerfile) ;
-* [`0.35-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.35/extras/Dockerfile) ;
-* [`0.34`](https://github.com/jguyomard/docker-hugo/blob/v0.34/Dockerfile) ;
-* [`0.34-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.34/extras/Dockerfile) ;
-* [`0.33`](https://github.com/jguyomard/docker-hugo/blob/v0.33/Dockerfile) ;
-* [`0.33-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.33/extras/Dockerfile) ;
-* [`0.32`](https://github.com/jguyomard/docker-hugo/blob/v0.32/Dockerfile) ;
-* [`0.32-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.32/extras/Dockerfile) ;
-* [`0.31`](https://github.com/jguyomard/docker-hugo/blob/v0.31/Dockerfile) ;
-* [`0.31-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.31/extras/Dockerfile) ;
-* [`0.30`](https://github.com/jguyomard/docker-hugo/blob/v0.30/Dockerfile) ;
-* [`0.30-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.30/extras/Dockerfile) ;
-* [`0.29`](https://github.com/jguyomard/docker-hugo/blob/v0.29/Dockerfile) ;
-* [`0.29-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.29/extras/Dockerfile) ;
-* [`0.28`](https://github.com/jguyomard/docker-hugo/blob/v0.28/Dockerfile) ;
-* [`0.28-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.28/extras/Dockerfile) ;
-* [`0.27`](https://github.com/jguyomard/docker-hugo/blob/v0.27/Dockerfile) ;
-* [`0.27-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.27/extras/Dockerfile) ;
-* [`0.26`](https://github.com/jguyomard/docker-hugo/blob/v0.26/Dockerfile) ;
-* [`0.26-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.26/extras/Dockerfile) ;
-* [`0.25`](https://github.com/jguyomard/docker-hugo/blob/v0.25/Dockerfile) ;
-* [`0.25-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.25/extras/Dockerfile) ;
-* [`0.24`](https://github.com/jguyomard/docker-hugo/blob/v0.24/Dockerfile) ;
-* [`0.24-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.24/extras/Dockerfile) ;
-* [`0.23`](https://github.com/jguyomard/docker-hugo/blob/v0.23/Dockerfile) ;
-* [`0.23-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.23/extras/Dockerfile) ;
-* [`0.22`](https://github.com/jguyomard/docker-hugo/blob/v0.22/Dockerfile) ;
-* [`0.22-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.22/extras/Dockerfile) ;
-* [`0.21`](https://github.com/jguyomard/docker-hugo/blob/v0.21/Dockerfile) ;
-* [`0.21-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.21/extras/Dockerfile) ;
-* [`0.20`](https://github.com/jguyomard/docker-hugo/blob/v0.20/Dockerfile) ;
-* [`0.20-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.20/extras/Dockerfile) ;
-* [`0.19`](https://github.com/jguyomard/docker-hugo/blob/v0.19/Dockerfile) ;
-* [`0.19-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.19/extras/Dockerfile) ;
-* [`0.18`](https://github.com/jguyomard/docker-hugo/blob/v0.18/Dockerfile) ;
-* [`0.18-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.18/extras/Dockerfile) ;
-* [`0.17`](https://github.com/jguyomard/docker-hugo/blob/v0.17/Dockerfile) ;
-* [`0.17-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.17/extras/Dockerfile) ;
-* [`0.16`](https://github.com/jguyomard/docker-hugo/blob/v0.16/Dockerfile) ;
-* [`0.15`](https://github.com/jguyomard/docker-hugo/blob/v0.15/Dockerfile).
+The latest builds are:
 
+- [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile)
+- [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile)
+- [`0.37`](https://github.com/jguyomard/docker-hugo/blob/v0.37/Dockerfile)
+- [`0.37-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.37/extras/Dockerfile)
+
+A complete list of available tags can be found on the [docker store page](https://store.docker.com/community/images/jguyomard/hugo-builder/tags).
 
 ## Users
 
@@ -135,7 +99,7 @@ docker run --rm -it -v $PWD:/src -u 33:33 jguyomard/hugo-builder hugo
 
 ## Extras
 
-`extras` tag add some others tools and packages:
+The [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) tag adds additional tools and packages:
 
 * py-pygments
 
@@ -148,7 +112,7 @@ docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder:extras hugo
 
 ## Continuous Deployment
 
-I use this Docker image for Continuous Deployment. You can find some CI config examples on `ci-deploy` directory.
+I use this Docker image for Continuous Deployment. You can find some CI config examples in the [`ci-deploy`](https://github.com/jguyomard/docker-hugo/tree/master/ci-deploy) directory.
 
 This Docker image also comes with:
 
