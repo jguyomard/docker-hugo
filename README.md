@@ -71,10 +71,14 @@ Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
 ## Supported tags
 
+The latest builds are:
+
+- [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile)
+- [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile)
+- [`0.37`](https://github.com/jguyomard/docker-hugo/blob/v0.37/Dockerfile)
+- [`0.37-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.37/extras/Dockerfile)
+
 A complete list of available tags can be found on the [docker store page](https://store.docker.com/community/images/jguyomard/hugo-builder/tags).
-
-The latest builds are available via the tags [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile) and [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile).
-
 
 ## Users
 
