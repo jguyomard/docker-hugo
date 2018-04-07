@@ -1,0 +1,19 @@
+image: jguyomard/hugo-builder:latest
+
+# Note: You have to define SSH_PORT and SSH_HOSTDEST with bitbucket environment variables and add SSH key to the pipeline configuration.
+
+pipelines:
+  default:
+    - step:
+        name: Build and minify files
+        script:
+          - hugo
+          - minify -r -o public/ public/
+        artifacts:
+          - public/**
+    - step:
+        name: Deploy with rsync to remote server
+        deployment: production
+        script:
+          - rsync -rv -e "ssh -p $SSH_PORT" public/ "$SSH_HOSTDEST" --checksum
+
