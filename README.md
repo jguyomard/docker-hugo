@@ -5,8 +5,8 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/jguyomard/hugo-builder.svg)](https://store.docker.com/community/images/jguyomard/hugo-builder)
 [![Image Info](https://images.microbadger.com/badges/image/jguyomard/hugo-builder.svg)](https://microbadger.com/images/jguyomard/hugo-builder)
 
-[Hugo](https://gohugo.io/) is a fast and flexible static site generator, written in Go. 
-Hugo flexibly works with many formats and is ideal for blogs, docs, portfolios and much more. 
+[Hugo](https://gohugo.io/) is a fast and flexible static site generator, written in Go.
+Hugo flexibly works with many formats and is ideal for blogs, docs, portfolios and much more.
 Hugo’s speed fosters creativity and makes building a website fun again.
 
 This Lightweight Docker Image is based on Alpine, and comes with rsync for Continuous Deployment.
@@ -41,7 +41,7 @@ xdg-open content/posts/my-first-post.md
 ```
 
 Build your site:
- 
+
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
 ```
@@ -56,7 +56,6 @@ Then open [`http://localhost:1313/`](http://localhost:1313/) in your browser.
 
 To go further, read the [Hugo documentation](https://gohugo.io/documentation/).
 
-
 ## Bash Alias
 
 For ease of use, you can create a bash alias:
@@ -68,15 +67,14 @@ alias hugo-server='docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyoma
 
 Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
 
-
 ## Supported tags
 
 The latest builds are:
 
 - [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile)
 - [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile)
-- [`0.38`](https://github.com/jguyomard/docker-hugo/blob/v0.38/Dockerfile)
-- [`0.38-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.38/extras/Dockerfile)
+- [`0.39`](https://github.com/jguyomard/docker-hugo/blob/v0.39/Dockerfile)
+- [`0.39-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.39/extras/Dockerfile)
 
 A complete list of available tags can be found on the [docker store page](https://store.docker.com/community/images/jguyomard/hugo-builder/tags).
 
@@ -96,19 +94,17 @@ You can also change this according your needs, by setting another UID/GID. For i
 docker run --rm -it -v $PWD:/src -u 33:33 jguyomard/hugo-builder hugo
 ```
 
-
 ## Extras
 
 The [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile) tag adds additional tools and packages:
 
-* py-pygments
+- py-pygments
 
 To use this version:
 
 ```bash
 docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder:extras hugo
 ```
-
 
 ## Continuous Deployment
 
@@ -121,12 +117,10 @@ This Docker image also comes with:
 - openssh-client
 - [minify](https://github.com/tdewolff/minify)
 
-
 ## Issues
 
-If you have any problems with or questions about this docker image, please contact me through a [GitHub issue](https://github.com/jguyomard/docker-hugo/issues). 
+If you have any problems with or questions about this docker image, please contact me through a [GitHub issue](https://github.com/jguyomard/docker-hugo/issues).
 If the issue is related to Hugo itself, please leave an issue on the [Hugo official repository](https://github.com/spf13/hugo).
-
 
 ## Contributing
 
