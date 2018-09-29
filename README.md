@@ -73,8 +73,8 @@ The latest builds are:
 
 - [`latest`](https://github.com/jguyomard/docker-hugo/blob/master/Dockerfile)
 - [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Dockerfile)
-- [`0.47`](https://github.com/jguyomard/docker-hugo/blob/v0.47/Dockerfile)
-- [`0.47-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.47/extras/Dockerfile)
+- [`0.48`](https://github.com/jguyomard/docker-hugo/blob/v0.48/Dockerfile)
+- [`0.48-extras`](https://github.com/jguyomard/docker-hugo/blob/v0.48/extras/Dockerfile)
 
 A complete list of available tags can be found on the [docker store page](https://store.docker.com/community/images/jguyomard/hugo-builder/tags).
 
