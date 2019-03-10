@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     openssh-client \
     rsync
 
-ENV VERSION 0.51
+ENV VERSION 0.52
 RUN mkdir -p /usr/local/src \
     && cd /usr/local/src \
 
