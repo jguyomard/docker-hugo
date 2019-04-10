@@ -1,0 +1,66 @@
+---
+version: 2.1
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: scalefactory/docker-hugo
+    docker:
+      - image: circleci/buildpack-deps:xenial
+jobs:
+  build-docker:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: |
+            WITHOUT_VERSION=${CIRCLE_TAG/v/''}
+            WITHOUT_VERSION_AND_EXTENDED=${WITHOUT_VERSION/-extended/''}
+            EXTENDED=${CIRCLE_TAG/?*-extended/extended_}
+            BUILD_VERSION="${EXTENDED}${WITHOUT_VERSION_AND_EXTENDED}"
+            echo "Building version ${BUILD_VERSION}"
+            IMAGE_TAG=${CIRCLE_TAG/v/''}
+
+            echo "Tagging version ${IMAGE_TAG}"
+            docker build -t $IMAGE_NAME:$IMAGE_TAG --build-arg RELEASE_VERSION=$WITHOUT_VERSION_AND_EXTENDED --build-arg PACKAGE_VERSION=$BUILD_VERSION .
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+  publish-to-dockerhub:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            IMAGE_TAG=${CIRCLE_TAG/v/''}
+            docker push $IMAGE_NAME:$IMAGE_TAG
+workflows:
+  version: 2
+  "dockerhub-publish-tags":
+    jobs:
+      - build-docker:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - publish-to-dockerhub:
+          requires:
+            - build-docker
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
