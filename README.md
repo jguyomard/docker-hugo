@@ -22,7 +22,7 @@ docker run --rm -it jguyomard/hugo-builder hugo help
 Create a new Hugo managed website:
 
 ```bash
-docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new site mysite
+docker run --rm -it -v $PWD:/src -u ${UID}:hugo jguyomard/hugo-builder hugo new site mysite
 cd mysite
 
 # Now, you probably want to add a theme (see https://themes.gohugo.io/):
@@ -34,7 +34,7 @@ echo 'theme = "ananke"' >> config.toml
 Add some content:
 
 ```bash
-docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo new posts/my-first-post.md
+docker run --rm -it -v $PWD:/src -u ${UID}:hugo jguyomard/hugo-builder hugo new posts/my-first-post.md
 
 # Now, you can edit this post, add your content and remove "draft" flag:
 xdg-open content/posts/my-first-post.md
@@ -43,13 +43,13 @@ xdg-open content/posts/my-first-post.md
 Build your site:
 
 ```bash
-docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo
+docker run --rm -it -v $PWD:/src -u ${UID}:hugo jguyomard/hugo-builder hugo
 ```
 
 Serve your site locally:
 
 ```bash
-docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyomard/hugo-builder hugo server -w --bind=0.0.0.0
+docker run --rm -it -v $PWD:/src -p 1313:1313 -u ${UID}:hugo jguyomard/hugo-builder hugo server -w --bind=0.0.0.0
 ```
 
 Then open [`http://localhost:1313/`](http://localhost:1313/) in your browser.
@@ -61,8 +61,8 @@ To go further, read the [Hugo documentation](https://gohugo.io/documentation/).
 For ease of use, you can create a bash alias:
 
 ```bash
-alias hugo='docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder hugo'
-alias hugo-server='docker run --rm -it -v $PWD:/src -p 1313:1313 -u hugo jguyomard/hugo-builder hugo server --bind 0.0.0.0'
+alias hugo='docker run --rm -it -v $PWD:/src -u ${UID}:hugo jguyomard/hugo-builder hugo'
+alias hugo-server='docker run --rm -it -v $PWD:/src -p 1313:1313 -u ${UID}:hugo jguyomard/hugo-builder hugo server --bind 0.0.0.0'
 ```
 
 Now, you can use `hugo help`, `hugo new foo/bar.md`, `hugo-server -w`, etc.
@@ -82,10 +82,10 @@ A complete list of available tags can be found on the [docker store page](https:
 
 By default, this docker image run as the root user. This makes it easy to use as base image for other Dockerfiles (switching back and forth adds extra layers and is against the current [best practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#user) advised by Docker). Most (all official?) base images leave the default user as root.
 
-However, this docker image also define a non-root user `hugo` (UID 1000, GID 1000) which can be switched on at run time using the `--user` flag to `docker run`.
+However, this docker image also define a non-root user `hugo` (UID 1000, GID 1000) which can be switched on at run time using the `--user` flag to `docker run`. And you could use --user ${UID}:hugo to map current user to the `hugo` user in the docker image.
 
 ```bash
-docker run --rm -it -v $PWD:/src --user hugo jguyomard/hugo-builder hugo
+docker run --rm -it -v $PWD:/src --user ${UID}:hugo jguyomard/hugo-builder hugo
 ```
 
 You can also change this according your needs, by setting another UID/GID. For instance, to run hugo with user `www-data:www-data` (UID 33, GID 33) :
@@ -103,7 +103,7 @@ The [`extras`](https://github.com/jguyomard/docker-hugo/blob/master/extras/Docke
 To use this version:
 
 ```bash
-docker run --rm -it -v $PWD:/src -u hugo jguyomard/hugo-builder:extras hugo
+docker run --rm -it -v $PWD:/src -u ${UID}:hugo jguyomard/hugo-builder:extras hugo
 ```
 
 ## Continuous Deployment
